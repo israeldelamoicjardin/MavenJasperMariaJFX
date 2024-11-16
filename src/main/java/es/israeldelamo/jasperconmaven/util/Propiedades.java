@@ -17,7 +17,10 @@ public class Propiedades {
     static {
 
         //	try (FileInputStream input = new FileInputStream(new File(System.getProperty("user.dir") + "\\configuration.properties"))){
-        try(FileInputStream input = new FileInputStream("src/main/resources/es/israeldelamo/jasperconmaven/configuration.properties")){
+        try(
+                FileInputStream input = new FileInputStream("src/main/resources/es/israeldelamo/jasperconmaven/configuration.properties"))
+
+        {
 
 
             props.load(input);

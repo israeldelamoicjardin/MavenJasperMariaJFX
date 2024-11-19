@@ -1,7 +1,6 @@
 package es.israeldelamo.jasperconmaven.controlador;
 
 import es.israeldelamo.jasperconmaven.conexiondb.ConexionBBDD;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
@@ -11,9 +10,7 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+
 import java.io.InputStream;
 import java.util.HashMap;
 

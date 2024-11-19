@@ -5,8 +5,8 @@ module es.israeldelamo.jasperconmaven {
     requires net.sf.jasperreports.core;
 
 
-    opens es.israeldelamo.jasperconmaven to javafx.fxml;
-    exports es.israeldelamo.jasperconmaven;
+    opens es.israeldelamo.jasperconmaven to javafx.fxml, javafx.base;
+    exports es.israeldelamo.jasperconmaven to javafx.graphics;
     exports es.israeldelamo.jasperconmaven.controlador;
-    opens es.israeldelamo.jasperconmaven.controlador to javafx.fxml;
+    opens es.israeldelamo.jasperconmaven.controlador to javafx.fxml, javafx.base;
 }

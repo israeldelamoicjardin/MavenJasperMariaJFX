@@ -66,13 +66,5 @@ import java.util.Properties;
             return conexion;
         }
 
-        public static void main(String[] args) {
-            try {
-                ConexionBBDD co = new ConexionBBDD();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-
-        }
     }
 

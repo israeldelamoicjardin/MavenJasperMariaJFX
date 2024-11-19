@@ -14,6 +14,7 @@ import net.sf.jasperreports.view.JasperViewer;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.HashMap;
 
 
@@ -42,8 +43,17 @@ public class ControladorEjemploJasper {
             parameters.put("codigo", 5);
             parameters.put("nombre", "xxxx");
 
+
+            InputStream reportStream = getClass().getResourceAsStream("/es/israeldelamo/jasperconmaven/jasper/Cherry.jasper");
+            if (reportStream == null) {
+                System.out.println("El archivo no esta ahí");
+            }else {
+                System.out.println("El archivo se ha encontrado");
+            }
+            JasperReport report = (JasperReport) JRLoader.loadObject(reportStream);
+
             //Atentos a la ruta del Jasper y a cómo enlazamos el archivo compilado por JasperReports
-            JasperReport report = (JasperReport) JRLoader.loadObject(new File("src/main/resources/es/israeldelamo/jasperconmaven/reports/Cherry.jasper"));
+           // JasperReport report = (JasperReport) JRLoader.loadObject(new File("src/main/resources/es/israeldelamo/jasperconmaven/reports/Cherry.jasper"));
             JasperPrint jprint = JasperFillManager.fillReport(report, parameters, con.getConexion());
             //Preparamos un visor, no intentaremos usar el salvar a PDF; para eso el SO ya nos da las impresoras A PDF
             JasperViewer viewer = new JasperViewer(jprint, false);

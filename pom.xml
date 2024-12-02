@@ -25,10 +25,27 @@
       <version>22-ea+11</version>
     </dependency>
 
+
+    <!-- https://mvnrepository.com/artifact/net.sf.jasperreports/jasperreports-fonts -->
+    <dependency>
+      <groupId>net.sf.jasperreports</groupId>
+      <artifactId>jasperreports-fonts</artifactId>
+      <version>7.0.0</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/net.sf.jasperreports/jasperreports-metadata -->
+    <dependency>
+      <groupId>net.sf.jasperreports</groupId>
+      <artifactId>jasperreports-metadata</artifactId>
+      <version>7.0.0</version>
+    </dependency>
+
+
+
+
     <dependency>
       <groupId>net.sf.jasperreports</groupId>
       <artifactId>jasperreports</artifactId>
-      <version>7.0.1</version>
+      <version>7.0.0</version>
       <exclusions>
         <exclusion>
           <groupId>com.lowagie</groupId>

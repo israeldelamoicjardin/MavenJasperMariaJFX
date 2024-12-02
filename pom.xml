@@ -25,44 +25,59 @@
       <version>22-ea+11</version>
     </dependency>
 
-    <!-- https://mvnrepository.com/artifact/net.sf.jasperreports/jasperreports -->
     <dependency>
       <groupId>net.sf.jasperreports</groupId>
       <artifactId>jasperreports</artifactId>
       <version>7.0.1</version>
+      <exclusions>
+        <exclusion>
+          <groupId>com.lowagie</groupId>
+          <artifactId>itext</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
-
+    <dependency>
+      <groupId>com.lowagie</groupId>
+      <artifactId>itext</artifactId>
+      <version>2.1.7</version>
+      <exclusions>
+        <exclusion>
+          <groupId>bouncycastle</groupId>
+          <artifactId>bcprov-jdk14</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>bouncycastle</groupId>
+          <artifactId>bcmail-jdk14</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
 
     <!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
     <!-- https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client -->
     <dependency>
       <groupId>org.mariadb.jdbc</groupId>
       <artifactId>mariadb-java-client</artifactId>
-      <version>3.3.3</version>
+      <version>3.4.1</version>
     </dependency>
     <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-nop -->
+
+
+
+
+    <!-- con esta linea ya no da error de noclass found, pero da error de illegal cacces -->
     <dependency>
-        <groupId>org.slf4j</groupId>
-        <artifactId>slf4j-nop</artifactId>
-        <version>2.0.16</version>
-        <scope>test</scope>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>1.7.25</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.7.25</version>
     </dependency>
 
 
-
-
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-api</artifactId>
-      <version>${junit.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-engine</artifactId>
-      <version>${junit.version}</version>
-      <scope>test</scope>
-    </dependency>  </dependencies>
+ </dependencies>
 
   <build>
     <plugins>

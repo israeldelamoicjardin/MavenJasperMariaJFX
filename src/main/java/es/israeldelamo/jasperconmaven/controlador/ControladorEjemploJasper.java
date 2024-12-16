@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
@@ -17,7 +18,8 @@ import net.sf.jasperreports.view.JasperViewer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.slf4j.LoggerFactory;
-
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperPrint;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -77,15 +79,36 @@ public class ControladorEjemploJasper {
                 logger.debug("UN DEBUG DE EJEMPLO");
                 logger.error("UN ERROR DE EJEMPLO");
             }
+
+
+
+
+// guardado directo como pdf
+            /*
+            try {
+                // Guardar como PDF
+                JasperExportManager.exportReportToPdfFile(jprint, "ruta/salida/informe.pdf");
+
+                logger.info("Informe exportado correctamente a PDF");
+            } catch (Exception e) {
+                logger.error("Error al exportar a PDF", e);
+            }
+            */
+
+
+
+
             JasperReport report = (JasperReport) JRLoader.loadObject(reportStream);
+
+
 
             //Atentos a la ruta del Jasper y a cómo enlazamos el archivo compilado por JasperReports
            // JasperReport report = (JasperReport) JRLoader.loadObject(new File("src/main/resources/es/israeldelamo/jasperconmaven/reports/Cherry.jasper"));
             JasperPrint jprint = JasperFillManager.fillReport(report, parameters, con.getConexion());
             //Preparamos un visor, no intentaremos usar el salvar a PDF; para eso el SO ya nos da las impresoras A PDF
-            JasperViewer viewer = new JasperViewer(jprint, false);
-            //lanzamos la visión
-            viewer.setVisible(true);
+           // Configurar el JasperViewer para mostrar el informe
+           JasperViewer.viewReport(jprint, false);
+           logger.info("Informe visualizado correctamente con JasperViewer.");
             logger.info("Informe Jasper lanzado con éxito."); // Log después de
         } catch (Exception e) {
             //como estamos en JavaFX tratamos la alerta aquí y comentamos el stack de consola.

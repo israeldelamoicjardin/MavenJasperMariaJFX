@@ -54,11 +54,6 @@ public class ControladorEjemploJasper {
         try {
             // abrimos la base de datos
             ConexionBBDD con = new ConexionBBDD();
-            //podemos crear un conjunto de parámetros si quisieramos pasárselo al informe
-            HashMap<String, Object> parameters = new HashMap<String, Object>();
-            parameters.put("codigo", 5);
-            parameters.put("nombre", "xxxx");
-
 
 
 
@@ -83,17 +78,7 @@ public class ControladorEjemploJasper {
 
 
 
-// guardado directo como pdf
-            /*
-            try {
-                // Guardar como PDF
-                JasperExportManager.exportReportToPdfFile(jprint, "ruta/salida/informe.pdf");
 
-                logger.info("Informe exportado correctamente a PDF");
-            } catch (Exception e) {
-                logger.error("Error al exportar a PDF", e);
-            }
-            */
 
 
 
@@ -104,12 +89,16 @@ public class ControladorEjemploJasper {
 
             //Atentos a la ruta del Jasper y a cómo enlazamos el archivo compilado por JasperReports
            // JasperReport report = (JasperReport) JRLoader.loadObject(new File("src/main/resources/es/israeldelamo/jasperconmaven/reports/Cherry.jasper"));
-            JasperPrint jprint = JasperFillManager.fillReport(report, parameters, con.getConexion());
+            JasperPrint jprint = JasperFillManager.fillReport(report, null, con.getConexion());
             //Preparamos un visor, no intentaremos usar el salvar a PDF; para eso el SO ya nos da las impresoras A PDF
            // Configurar el JasperViewer para mostrar el informe
            JasperViewer.viewReport(jprint, false);
+
            logger.info("Informe visualizado correctamente con JasperViewer.");
             logger.info("Informe Jasper lanzado con éxito."); // Log después de
+
+
+
         } catch (Exception e) {
             //como estamos en JavaFX tratamos la alerta aquí y comentamos el stack de consola.
             // en desarrollo sería conveniente tenerlo descomentado

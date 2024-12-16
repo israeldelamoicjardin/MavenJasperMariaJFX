@@ -4,10 +4,11 @@ module es.israeldelamo.jasperconmaven {
 
     requires org.mariadb.jdbc;
 
-requires slf4j.api;
-requires slf4j.simple;
+
+
     requires jasperreports;
-    requires org.apache.logging.log4j;
+    requires org.slf4j;
+
 
     opens es.israeldelamo.jasperconmaven to javafx.fxml, javafx.base;
     exports es.israeldelamo.jasperconmaven to javafx.graphics;

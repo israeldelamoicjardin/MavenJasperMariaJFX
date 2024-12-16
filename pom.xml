@@ -16,31 +16,18 @@
   </properties>
 
   <dependencies>
-    <dependency>
-      <groupId>org.apache.logging.log4j</groupId>
-      <artifactId>log4j-core</artifactId>
-      <version>2.23.1</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.logging.log4j</groupId>
-      <artifactId>log4j-api</artifactId>
-      <version>2.23.1</version>
-    </dependency>
-
-
-
-    <!-- SLF4J API -->
+    <!-- Dependencia de SLF4J -->
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
-      <version>2.0.7</version>
+      <version>2.0.13</version> <!-- Usa la última versión disponible -->
     </dependency>
 
-    <!-- Implementación de SLF4J con Log4j (opcional, ver nota abajo para Logback) -->
+    <!-- Dependencia de Logback (backend para SLF4J) -->
     <dependency>
-      <groupId>org.apache.logging.log4j</groupId>
-      <artifactId>log4j-slf4j2-impl</artifactId>
-      <version>2.23.1</version>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>1.5.6</version> <!-- Usa la última versión disponible -->
     </dependency>
 
 
@@ -79,7 +66,7 @@
       <artifactId>itextpdf</artifactId>
       <version>5.5.13.4</version> <!-- or your desired version -->
     </dependency>
-
+<!--Dependecia para guardar el log en un fichero -->
 
 
     <dependency>
@@ -90,16 +77,7 @@
 
 
 
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-simple</artifactId>
-      <version>1.7.25</version>
-    </dependency>
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-      <version>1.7.25</version>
-    </dependency>
+
   </dependencies>
 
   <build>
@@ -178,7 +156,7 @@
   <distributionManagement>
     <repository>
       <id>releases</id>
-      <url>http://example.com/releases</url>
+      <url>http://israeldelamo.es/releases</url>
     </repository>
   </distributionManagement>
 

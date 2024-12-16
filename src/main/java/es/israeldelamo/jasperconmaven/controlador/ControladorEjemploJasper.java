@@ -1,29 +1,22 @@
 package es.israeldelamo.jasperconmaven.controlador;
 
-import es.israeldelamo.jasperconmaven.EjemploJasper;
 import es.israeldelamo.jasperconmaven.Lanzador;
 import es.israeldelamo.jasperconmaven.conexiondb.ConexionBBDD;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
+
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
-import javafx.stage.Stage;
-import net.sf.jasperreports.engine.JasperExportManager;
+
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.slf4j.LoggerFactory;
-import net.sf.jasperreports.engine.JasperExportManager;
-import net.sf.jasperreports.engine.JasperPrint;
 
-import java.io.IOException;
+
+
 import java.io.InputStream;
-import java.util.HashMap;
+import java.util.function.Consumer;
 
 
 /**
@@ -35,7 +28,8 @@ public class ControladorEjemploJasper {
     /**
      * El logger para el proyecto basado en Log4j
      */
-    private static final org.slf4j.Logger logger = LoggerFactory.getLogger(ControladorEjemploJasper.class); // Logger de SLF4J
+  //  Logger logger = LogManager.getLogger(ControladorEjemploJasper.class); // Logger de SLF4J
+
 
 
     @FXML
@@ -48,31 +42,27 @@ public class ControladorEjemploJasper {
     @FXML
     protected void onLanzaJasperButtonClick() {
         textoInformacionJasper.setText("Vamos allá");
-        logger.info("Lanzando informe jasper"); // Reemplazo de System.out.println
+     //   logger.info( "Lanzando informe jasper"); // Reemplazo de System.out.println
 
         // comenzamos con el lanzamiento del informe
         try {
             // abrimos la base de datos
             ConexionBBDD con = new ConexionBBDD();
-
-
-
-
             InputStream reportStream = Lanzador.class.getResource("/es/israeldelamo/jasperconmaven/jasper/Cherry.jasper").openStream();
 
 
             if (reportStream == null) {
-                logger.warn("El archivo no está ahí");
-                logger.info("UN INFO DE EJEMPLO");
-                logger.warn("UN WARN DE EJEMPLO");
-                logger.debug("UN DEBUG DE EJEMPLO");
-                logger.error("UN ERROR DE EJEMPLO");
+           //     logger.warn("El archivo no está ahí");
+              //  logger.info("UN INFO DE EJEMPLO");
+            //    logger.warn("UN WARN DE EJEMPLO");
+             //   logger.debug("UN DEBUG DE EJEMPLO");
+             //   logger.error("UN ERROR DE EJEMPLO");
             }else {
-                logger.info("El archivo se ha encontrado");
-                logger.info("UN INFO DE EJEMPLO");
-                logger.warn("UN WARN DE EJEMPLO");
-                logger.debug("UN DEBUG DE EJEMPLO");
-                logger.error("UN ERROR DE EJEMPLO");
+              //  logger.info("El archivo se ha encontrado");
+              //  logger.info("UN INFO DE EJEMPLO");
+              //  logger.warn("UN WARN DE EJEMPLO");
+             //   logger.debug("UN DEBUG DE EJEMPLO");
+             //   logger.error("UN ERROR DE EJEMPLO");
             }
 
 
@@ -94,8 +84,8 @@ public class ControladorEjemploJasper {
            // Configurar el JasperViewer para mostrar el informe
            JasperViewer.viewReport(jprint, false);
 
-           logger.info("Informe visualizado correctamente con JasperViewer.");
-            logger.info("Informe Jasper lanzado con éxito."); // Log después de
+      //     logger.info("Informe visualizado correctamente con JasperViewer.");
+       //     logger.info("Informe Jasper lanzado con éxito."); // Log después de
 
 
 
@@ -108,11 +98,11 @@ public class ControladorEjemploJasper {
             alert.setContentText("Ha ocurrido un error al abrir el informe. Pida ayuda en el foro");
             alert.showAndWait();
             //e.printStackTrace();
-            logger.error("Error al abrir el informe Jasper", e);
-            logger.info("UN INFO DE EJEMPLO");
-            logger.warn("UN WARN DE EJEMPLO");
-            logger.debug("UN DEBUG DE EJEMPLO");
-            logger.error("UN ERROR DE EJEMPLO");
+         //   logger.error("Error al abrir el informe Jasper", e);
+         //   logger.info("UN INFO DE EJEMPLO");
+         //   logger.warn("UN WARN DE EJEMPLO");
+         //   logger.debug("UN DEBUG DE EJEMPLO");
+          //  logger.error("UN ERROR DE EJEMPLO");
         }
 
     }

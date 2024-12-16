@@ -1,6 +1,5 @@
 package es.israeldelamo.jasperconmaven;
 
-import es.israeldelamo.jasperconmaven.controlador.ControladorEjemploJasper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,7 +11,8 @@ import org.slf4j.LoggerFactory;
  */
 public class Lanzador {
 
-    private static final Logger logger = LoggerFactory.getLogger(Lanzador.class); // Logger de SLF4J
+    // Usamos SLF4J para el logger
+    private static final Logger logger = LoggerFactory.getLogger(Lanzador.class);
 
     /**
      * <p>main.</p>
@@ -20,11 +20,12 @@ public class Lanzador {
      * @param args an array of {@link String} objects
      */
     public static void main(String[] args) {
+        //ejemplos de errores
         logger.info("UN INFO DE EJEMPLO");
-        logger.warn("UN WARN DE EJEMPLO");
-        logger.debug("UN DEBUG DE EJEMPLO");
-        logger.error("UN ERROR DE EJEMPLO");
-        EjemploJasper.main(args);
+        logger.error("Mensaje SEVERE");
+        logger.warn("Mensaje WARNING");
+        logger.info("Mensaje INFO");  // Este debería mostrarse si el nivel está configurado correctamente
+       // EjemploJasper.main(args);
 
     }
 }

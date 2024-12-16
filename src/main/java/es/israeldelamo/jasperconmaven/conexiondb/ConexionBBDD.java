@@ -31,7 +31,7 @@ import java.util.Properties;
             connConfig.setProperty("user", user);
             connConfig.setProperty("password", password);
             //la conexion en sí
-            conexion = DriverManager.getConnection("jdbc:mariadb://localhost/"+baseDeDatosAConectar+"?serverTimezone=Europe/Madrid", connConfig);
+            conexion = DriverManager.getConnection("jdbc:mariadb://127.0.0.1/?serverTimezone=Europe/Madrid", connConfig);
             conexion.setAutoCommit(true);
             DatabaseMetaData databaseMetaData = conexion.getMetaData();
             //debug
@@ -64,6 +64,14 @@ import java.util.Properties;
         public Connection CloseConexion() throws SQLException{
             conexion.close();
             return conexion;
+        }
+
+        public static void main(String[] args) {
+            try {
+                ConexionBBDD con = new ConexionBBDD();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
 
     }

@@ -1,9 +1,13 @@
 package es.israeldelamo.jasperconmaven.controlador;
 
+import es.israeldelamo.jasperconmaven.EjemploJasper;
 import es.israeldelamo.jasperconmaven.conexiondb.ConexionBBDD;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
@@ -11,6 +15,7 @@ import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 
@@ -41,7 +46,12 @@ public class ControladorEjemploJasper {
             parameters.put("nombre", "xxxx");
 
 
-            InputStream reportStream = getClass().getResourceAsStream("/es/israeldelamo/jasperconmaven/jasper/Cherry.jasper");
+
+
+
+            InputStream reportStream = EjemploJasper.class.getResource("/es/israeldelamo/jasperconmaven/jasper/Cherry.jasper").openStream();
+
+
             if (reportStream == null) {
                 System.out.println("El archivo no esta ahí");
             }else {

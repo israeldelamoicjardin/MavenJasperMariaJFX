@@ -2,7 +2,11 @@ package es.israeldelamo.jasperconmaven.util;
 
 
 
+import es.israeldelamo.jasperconmaven.EjemploJasper;
+
 import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 /**
@@ -17,17 +21,23 @@ public class Propiedades {
     static {
 
         //	try (FileInputStream input = new FileInputStream(new File(System.getProperty("user.dir") + "\\configuration.properties"))){
-        try(
-                FileInputStream input = new FileInputStream("src/main/resources/es/israeldelamo/jasperconmaven/configuration.properties"))
 
-        {
-
-
-            props.load(input);
-        } catch (Exception e) {
-
-            System.out.println(e.getMessage());
+        InputStream reportStream;
+        try {
+             reportStream  = EjemploJasper.class.getResource("/es/israeldelamo/jasperconmaven/configuration.properties").openStream();
+        } catch (IOException e) {
+            System.out.printf(e.getMessage());
+            throw new RuntimeException(e);
         }
+
+
+        try {
+            props.load(reportStream);
+        } catch (IOException e) {
+            System.out.printf(e.getMessage());
+            throw new RuntimeException(e);
+        }
+
 
     }
 

@@ -1,6 +1,7 @@
 package es.israeldelamo.jasperconmaven.controlador;
 
 import es.israeldelamo.jasperconmaven.EjemploJasper;
+import es.israeldelamo.jasperconmaven.Lanzador;
 import es.israeldelamo.jasperconmaven.conexiondb.ConexionBBDD;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -49,7 +50,7 @@ public class ControladorEjemploJasper {
 
 
 
-            InputStream reportStream = EjemploJasper.class.getResource("/es/israeldelamo/jasperconmaven/jasper/Cherry.jasper").openStream();
+            InputStream reportStream = Lanzador.class.getResource("/es/israeldelamo/jasperconmaven/jasper/Cherry.jasper").openStream();
 
 
             if (reportStream == null) {

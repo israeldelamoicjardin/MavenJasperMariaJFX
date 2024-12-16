@@ -14,6 +14,9 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 import java.io.IOException;
@@ -25,6 +28,14 @@ import java.util.HashMap;
  * Controlador de la ventana FXML con un botoncillo que lanza un Jasper
  */
 public class ControladorEjemploJasper {
+
+
+    /**
+     * El logger para el proyecto basado en Log4j
+     */
+    private static final org.slf4j.Logger logger = LoggerFactory.getLogger(ControladorEjemploJasper.class); // Logger de SLF4J
+
+
     @FXML
     private Label textoInformacionJasper;
 
@@ -35,7 +46,7 @@ public class ControladorEjemploJasper {
     @FXML
     protected void onLanzaJasperButtonClick() {
         textoInformacionJasper.setText("Vamos allá");
-        System.out.println("Lanzando informe jasper");
+        logger.info("Lanzando informe jasper"); // Reemplazo de System.out.println
 
         // comenzamos con el lanzamiento del informe
         try {
@@ -54,9 +65,17 @@ public class ControladorEjemploJasper {
 
 
             if (reportStream == null) {
-                System.out.println("El archivo no esta ahí");
+                logger.warn("El archivo no está ahí");
+                logger.info("UN INFO DE EJEMPLO");
+                logger.warn("UN WARN DE EJEMPLO");
+                logger.debug("UN DEBUG DE EJEMPLO");
+                logger.error("UN ERROR DE EJEMPLO");
             }else {
-                System.out.println("El archivo se ha encontrado");
+                logger.info("El archivo se ha encontrado");
+                logger.info("UN INFO DE EJEMPLO");
+                logger.warn("UN WARN DE EJEMPLO");
+                logger.debug("UN DEBUG DE EJEMPLO");
+                logger.error("UN ERROR DE EJEMPLO");
             }
             JasperReport report = (JasperReport) JRLoader.loadObject(reportStream);
 
@@ -67,6 +86,7 @@ public class ControladorEjemploJasper {
             JasperViewer viewer = new JasperViewer(jprint, false);
             //lanzamos la visión
             viewer.setVisible(true);
+            logger.info("Informe Jasper lanzado con éxito."); // Log después de
         } catch (Exception e) {
             //como estamos en JavaFX tratamos la alerta aquí y comentamos el stack de consola.
             // en desarrollo sería conveniente tenerlo descomentado
@@ -76,6 +96,11 @@ public class ControladorEjemploJasper {
             alert.setContentText("Ha ocurrido un error al abrir el informe. Pida ayuda en el foro");
             alert.showAndWait();
             //e.printStackTrace();
+            logger.error("Error al abrir el informe Jasper", e);
+            logger.info("UN INFO DE EJEMPLO");
+            logger.warn("UN WARN DE EJEMPLO");
+            logger.debug("UN DEBUG DE EJEMPLO");
+            logger.error("UN ERROR DE EJEMPLO");
         }
 
     }

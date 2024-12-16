@@ -17,7 +17,7 @@
     </appender>
 
     <!-- Configuración del logger -->
-    <logger name="es.israeldelamo.jasperconmaven" level="DEBUG">
+    <logger name="es.israeldelamo.jasperconmaven" level="INFO">
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="FILE"/>
     </logger>

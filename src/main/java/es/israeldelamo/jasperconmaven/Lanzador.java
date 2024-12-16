@@ -25,7 +25,7 @@ public class Lanzador {
         logger.error("Mensaje SEVERE");
         logger.warn("Mensaje WARNING");
         logger.info("Mensaje INFO");  // Este debería mostrarse si el nivel está configurado correctamente
-       // EjemploJasper.main(args);
+        EjemploJasper.main(args);
 
     }
 }
